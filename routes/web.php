@@ -25,9 +25,7 @@ Route::get('/test', function () {
 });
 
 // Routes for SPA frontend (Vue.js)
-Route::get('/events/find', function () {
-    return view('events.find');
-})->name('events.find');
+Route::get('/events/find', [\App\Http\Controllers\EventController::class, 'find'])->name('events.find');
 
 // Routes for game catalog
 Route::get('/games', [\App\Http\Controllers\GameController::class, 'index'])->name('games.index');

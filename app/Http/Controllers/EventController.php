@@ -83,4 +83,30 @@ class EventController extends Controller
                 ->with('error', 'L\'événement demandé n\'existe pas ou a été supprimé.');
         }
     }
+
+    public function find(Request $request)
+    {
+        $query = Event::query()
+            ->with(['game', 'user'])
+            ->where('is_approved', true)
+            ->where('is_cancelled', false)
+            ->where('start_datetime', '>', now());
+
+        if ($request->filled('game')) {
+            $query->where('game_id', $request->game);
+        }
+
+        if ($request->filled('event_type')) {
+            $query->where('event_type', $request->event_type);
+        }
+
+        if ($request->filled('city')) {
+            $query->where('city', 'like', '%' . $request->city . '%');
+        }
+
+        $events = $query->orderBy('start_datetime')->paginate(9);
+        $games = Game::orderBy('name')->get();
+
+        return view('events.find', compact('events', 'games'));
+    }
 }
