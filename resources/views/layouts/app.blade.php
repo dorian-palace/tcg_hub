@@ -34,14 +34,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     @yield('styles')
 </head>
-<body class="bg-dark-primary text-dark-text min-h-screen">
+<body class="min-h-screen bg-[rgb(17,24,39)] text-white">
     @include('components.navbar')
 
     <main class="container mx-auto px-4 py-8">
-        @yield('content')
+        <div class="bg-[rgb(31,41,55)] rounded-lg shadow-lg p-6">
+            @yield('content')
+        </div>
     </main>
 
-    <footer class="bg-dark-secondary text-dark-text py-4 mt-5">
+    <footer class="bg-[rgb(31,41,55)] text-white py-4 mt-5">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -65,7 +67,7 @@
                     </ul>
                 </div>
             </div>
-            <hr class="my-8 border-dark-accent">
+            <hr class="my-8 border-[rgb(55,65,81)]">
             <div class="text-center">
                 <p>&copy; 2025 TCG HUB. Tous droits réservés.</p>
             </div>
