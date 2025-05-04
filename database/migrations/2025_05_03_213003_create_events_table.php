@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('postal_code');
             $table->string('country')->default('France');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->dateTime('start_datetime');
             $table->dateTime('end_datetime');
             $table->enum('event_type', ['tournament', 'casual_play', 'trade', 'release', 'other'])->default('casual_play');

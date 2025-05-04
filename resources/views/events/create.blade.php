@@ -6,6 +6,18 @@
         <div class="bg-[rgb(31,41,55)] rounded-lg shadow-lg p-6">
             <h1 class="text-2xl font-bold text-white mb-6">Créer un nouvel événement</h1>
 
+            @if(session('success'))
+                <div class="mb-4 p-4 bg-green-900 text-green-200 rounded-md">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="mb-4 p-4 bg-red-900 text-red-200 rounded-md">
+                    {{ session('error') }}
+                </div>
+            @endif
+
             <form method="POST" action="{{ route('events.store') }}" class="space-y-6">
                 @csrf
                 <div class="space-y-4">
@@ -43,14 +55,16 @@
                     </div>
 
                     <div>
-                        <label for="type" class="block text-sm font-medium text-gray-300">Type d'événement</label>
-                        <select id="type" name="type" required
+                        <label for="event_type" class="block text-sm font-medium text-gray-300">Type d'événement</label>
+                        <select id="event_type" name="event_type" required
                             class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-white bg-[rgb(31,41,55)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
-                            <option value="tournament" {{ old('type') == 'tournament' ? 'selected' : '' }}>Tournoi</option>
-                            <option value="casual" {{ old('type') == 'casual' ? 'selected' : '' }}>Partie amicale</option>
-                            <option value="league" {{ old('type') == 'league' ? 'selected' : '' }}>Ligue</option>
+                            <option value="tournament" {{ old('event_type') == 'tournament' ? 'selected' : '' }}>Tournoi</option>
+                            <option value="casual_play" {{ old('event_type') == 'casual_play' ? 'selected' : '' }}>Partie amicale</option>
+                            <option value="trade" {{ old('event_type') == 'trade' ? 'selected' : '' }}>Échange</option>
+                            <option value="release" {{ old('event_type') == 'release' ? 'selected' : '' }}>Sortie</option>
+                            <option value="other" {{ old('event_type') == 'other' ? 'selected' : '' }}>Autre</option>
                         </select>
-                        @error('type')
+                        @error('event_type')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
@@ -83,10 +97,34 @@
                     </div>
 
                     <div>
+                        <label for="state" class="block text-sm font-medium text-gray-300">Région/Département</label>
+                        <input type="text" id="state" name="state" value="{{ old('state') }}" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-white bg-[rgb(31,41,55)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                        @error('state')
+                            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
                         <label for="postal_code" class="block text-sm font-medium text-gray-300">Code postal</label>
                         <input type="text" id="postal_code" name="postal_code" value="{{ old('postal_code') }}" required
                             class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-white bg-[rgb(31,41,55)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
                         @error('postal_code')
+                            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="country" class="block text-sm font-medium text-gray-300">Pays</label>
+                        <select id="country" name="country" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-white bg-[rgb(31,41,55)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            <option value="France" {{ old('country') == 'France' ? 'selected' : '' }}>France</option>
+                            <option value="Belgique" {{ old('country') == 'Belgique' ? 'selected' : '' }}>Belgique</option>
+                            <option value="Suisse" {{ old('country') == 'Suisse' ? 'selected' : '' }}>Suisse</option>
+                            <option value="Canada" {{ old('country') == 'Canada' ? 'selected' : '' }}>Canada</option>
+                            <option value="Luxembourg" {{ old('country') == 'Luxembourg' ? 'selected' : '' }}>Luxembourg</option>
+                        </select>
+                        @error('country')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
@@ -111,7 +149,7 @@
 
                     <div>
                         <label for="max_participants" class="block text-sm font-medium text-gray-300">Nombre maximum de participants</label>
-                        <input type="number" id="max_participants" name="max_participants" value="{{ old('max_participants') }}" min="2"
+                        <input type="number" id="max_participants" name="max_participants" value="{{ old('max_participants') }}" min="2" required
                             class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-white bg-[rgb(31,41,55)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
                         @error('max_participants')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>

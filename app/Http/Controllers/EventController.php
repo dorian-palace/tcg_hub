@@ -26,7 +26,7 @@ class EventController extends Controller
                 'venue_name' => 'required|string|max:255',
                 'address' => 'required|string|max:255',
                 'city' => 'required|string|max:255',
-                'state' => 'required|string|max:255',
+                'state' => 'nullable|string|max:255',
                 'postal_code' => 'required|string|max:20',
                 'country' => 'required|string|max:255',
                 'start_datetime' => 'required|date|after:now',

@@ -44,14 +44,16 @@
                     </div>
 
                     <div>
-                        <label for="type" class="block text-sm font-medium text-gray-300">Type d'événement</label>
-                        <select id="type" name="type" required
+                        <label for="event_type" class="block text-sm font-medium text-gray-300">Type d'événement</label>
+                        <select id="event_type" name="event_type" required
                             class="mt-1 block w-full px-3 py-2 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 text-white bg-[rgb(31,41,55)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
-                            <option value="tournament" {{ old('type', $event->type) == 'tournament' ? 'selected' : '' }}>Tournoi</option>
-                            <option value="casual" {{ old('type', $event->type) == 'casual' ? 'selected' : '' }}>Partie amicale</option>
-                            <option value="league" {{ old('type', $event->type) == 'league' ? 'selected' : '' }}>Ligue</option>
+                            <option value="tournament" {{ old('event_type', $event->event_type) == 'tournament' ? 'selected' : '' }}>Tournoi</option>
+                            <option value="casual_play" {{ old('event_type', $event->event_type) == 'casual_play' ? 'selected' : '' }}>Partie amicale</option>
+                            <option value="trade" {{ old('event_type', $event->event_type) == 'trade' ? 'selected' : '' }}>Échange</option>
+                            <option value="release" {{ old('event_type', $event->event_type) == 'release' ? 'selected' : '' }}>Sortie</option>
+                            <option value="other" {{ old('event_type', $event->event_type) == 'other' ? 'selected' : '' }}>Autre</option>
                         </select>
-                        @error('type')
+                        @error('event_type')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
