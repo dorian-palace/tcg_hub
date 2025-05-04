@@ -54,13 +54,8 @@ Route::middleware(['auth'])->group(function () {
         return view('profile');
     })->name('profile');
 
-    Route::get('/profile/edit', function () {
-        return view('profile.edit');
-    })->name('profile.edit');
-
-    Route::post('/profile/update', function () {
-        // This will be handled by a controller later
-    })->name('profile.update');
+    Route::get('/profile/edit', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     // Admin game management routes
     Route::middleware(['admin'])->group(function () {

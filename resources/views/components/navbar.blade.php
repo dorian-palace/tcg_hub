@@ -25,7 +25,7 @@
 
                 <div class="flex items-center space-x-4">
                     @auth
-                        <div class="relative" x-data="{ open: false }">
+                        <div class="relative" x-data="{ open: false }" @click.away="open = false">
                             <button @click="open = !open" class="flex items-center text-white hover:text-blue-400 transition-colors">
                                 {{ Auth::user()->name }}
                                 <svg class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -33,8 +33,9 @@
                                 </svg>
                             </button>
 
-                            <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 bg-[rgb(31,41,55)] rounded-md shadow-lg py-1 z-50">
+                            <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 w-48 bg-[rgb(31,41,55)] rounded-md shadow-lg py-1 z-50">
                                 <a href="{{ route('profile') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Tableau de bord</a>
+                                <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Modifier mon profil</a>
                                 <a href="{{ route('my-collection') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Ma collection</a>
                                 <a href="{{ route('my-events') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Mes événements</a>
                                 <a href="{{ route('transactions.index') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Mes transactions</a>
@@ -69,7 +70,20 @@
     </div>
 </nav>
 
+<style>
+[x-cloak] { display: none !important; }
+</style>
+
 <script>
+document.addEventListener('alpine:init', () => {
+    Alpine.data('dropdown', () => ({
+        open: false,
+        toggle() {
+            this.open = !this.open
+        }
+    }))
+})
+
 document.getElementById('mobile-menu-button').addEventListener('click', function() {
     document.getElementById('mobile-menu').classList.toggle('hidden');
 });
