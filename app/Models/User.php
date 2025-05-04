@@ -117,8 +117,157 @@ class User extends Authenticatable
      * 
      * @return bool
      */
-    public function isAdmin()
+    public function isAdmin(): bool
     {
-        return $this->is_admin ?? false;
+        return $this->role === 'admin';
+    }
+
+    public function isOrganizer(): bool
+    {
+        return $this->role === 'organizer';
+    }
+
+    public function isPlayer(): bool
+    {
+        return $this->role === 'player';
+    }
+
+    public function getUpcomingEvents(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->events()
+            ->where('start_datetime', '>', now())
+            ->where('is_cancelled', false)
+            ->orderBy('start_datetime');
+    }
+
+    public function getPastEvents(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->events()
+            ->where('end_datetime', '<', now())
+            ->orderBy('end_datetime', 'desc');
+    }
+
+    public function getOngoingEvents(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->events()
+            ->where('start_datetime', '<=', now())
+            ->where('end_datetime', '>=', now())
+            ->where('is_cancelled', false);
+    }
+
+    public function getParticipatingEvents(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->participatingEvents()
+            ->where('is_cancelled', false)
+            ->orderBy('start_datetime');
+    }
+
+    public function getUpcomingParticipations(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->getParticipatingEvents()
+            ->where('start_datetime', '>', now());
+    }
+
+    public function getPastParticipations(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->getParticipatingEvents()
+            ->where('end_datetime', '<', now());
+    }
+
+    public function getOngoingParticipations(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->getParticipatingEvents()
+            ->where('start_datetime', '<=', now())
+            ->where('end_datetime', '>=', now());
+    }
+
+    public function getFormattedName(): string
+    {
+        return $this->name;
+    }
+
+    public function getFormattedRole(): string
+    {
+        return match($this->role) {
+            'admin' => 'Administrateur',
+            'organizer' => 'Organisateur',
+            'player' => 'Joueur',
+            default => $this->role
+        };
+    }
+
+    public function getEventCount(): int
+    {
+        return $this->events()->count();
+    }
+
+    public function getParticipationCount(): int
+    {
+        return $this->participatingEvents()->count();
+    }
+
+    public function getUpcomingEventCount(): int
+    {
+        return $this->getUpcomingEvents()->count();
+    }
+
+    public function getPastEventCount(): int
+    {
+        return $this->getPastEvents()->count();
+    }
+
+    public function getOngoingEventCount(): int
+    {
+        return $this->getOngoingEvents()->count();
+    }
+
+    public function getUpcomingParticipationCount(): int
+    {
+        return $this->getUpcomingParticipations()->count();
+    }
+
+    public function getPastParticipationCount(): int
+    {
+        return $this->getPastParticipations()->count();
+    }
+
+    public function getOngoingParticipationCount(): int
+    {
+        return $this->getOngoingParticipations()->count();
+    }
+
+    public function scopeAdmins($query)
+    {
+        return $query->where('role', 'admin');
+    }
+
+    public function scopeOrganizers($query)
+    {
+        return $query->where('role', 'organizer');
+    }
+
+    public function scopePlayers($query)
+    {
+        return $query->where('role', 'player');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
+    public function scopeInactive($query)
+    {
+        return $query->where('is_active', false);
+    }
+
+    public function scopeWithEvents($query)
+    {
+        return $query->has('events');
+    }
+
+    public function scopeWithParticipations($query)
+    {
+        return $query->has('participatingEvents');
     }
 }
