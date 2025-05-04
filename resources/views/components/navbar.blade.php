@@ -19,7 +19,7 @@
                 <div class="flex space-x-4">
                     <a href="/" class="text-white hover:text-blue-400 transition-colors {{ request()->is('/') ? 'text-blue-400' : '' }}">Accueil</a>
                     <a href="{{ route('games.index') }}" class="text-white hover:text-blue-400 transition-colors {{ request()->is('games*') ? 'text-blue-400' : '' }}">Jeux</a>
-                    <a href="{{ route('cards.index') }}" class="text-white hover:text-blue-400 transition-colors {{ request()->is('cards*') ? 'text-blue-400' : '' }}">Cartes</a>
+                    {{-- <a href="{{ route('cards.index') }}" class="text-white hover:text-blue-400 transition-colors {{ request()->is('cards*') ? 'text-blue-400' : '' }}">Cartes</a> --}}
                     <a href="{{ route('events.find') }}" class="text-white hover:text-blue-400 transition-colors {{ request()->is('events/find*') ? 'text-blue-400' : '' }}">Événements</a>
                 </div>
 
@@ -63,7 +63,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="/" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('/') ? 'bg-[rgb(55,65,81)]' : '' }}">Accueil</a>
                 <a href="{{ route('games.index') }}" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('games*') ? 'bg-[rgb(55,65,81)]' : '' }}">Jeux</a>
-                <a href="{{ route('cards.index') }}" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('cards*') ? 'bg-[rgb(55,65,81)]' : '' }}">Cartes</a>
+                {{-- <a href="{{ route('cards.index') }}" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('cards*') ? 'bg-[rgb(55,65,81)]' : '' }}">Cartes</a> --}}
                 <a href="{{ route('events.find') }}" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('events/find*') ? 'bg-[rgb(55,65,81)]' : '' }}">Événements</a>
             </div>
         </div>

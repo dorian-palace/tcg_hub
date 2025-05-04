@@ -86,6 +86,21 @@ class Event extends Model
                     ->withTimestamps();
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)
+                    ->with(['user', 'replies' => function ($query) {
+                        $query->with('user')->orderBy('created_at');
+                    }])
+                    ->whereNull('parent_id')
+                    ->orderBy('created_at', 'desc');
+    }
+
+    public function getCommentCount(): int
+    {
+        return $this->comments()->count();
+    }
+
     public function isUpcoming(): bool
     {
         return $this->start_datetime > now();

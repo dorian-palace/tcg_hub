@@ -74,7 +74,9 @@ Route::middleware(['auth'])->group(function () {
     })->name('events.create');
 
     Route::get('/events/{id}/edit', function ($id) {
-        return view('events.edit', compact('id'));
+        $event = \App\Models\Event::findOrFail($id);
+        $games = \App\Models\Game::all();
+        return view('events.edit', compact('event', 'games'));
     })->name('events.edit');
 
     Route::get('/events/{id}/participants', function ($id) {
@@ -99,10 +101,22 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/transactions/{transaction}/cancel', [TransactionController::class, 'cancel'])->name('transactions.cancel');
 
     // Routes for events
+    Route::get('/events', [\App\Http\Controllers\EventController::class, 'index'])
+        ->name('events.index');
     Route::get('/events/create', [\App\Http\Controllers\EventController::class, 'create'])
         ->name('events.create');
     Route::post('/events', [\App\Http\Controllers\EventController::class, 'store'])
         ->name('events.store');
     Route::get('/events/{id}', [\App\Http\Controllers\EventController::class, 'show'])
         ->name('events.show');
+    Route::put('/events/{id}', [\App\Http\Controllers\EventController::class, 'update'])
+        ->name('events.update');
+
+    // Routes pour les commentaires
+    Route::post('/events/{event}/comments', [\App\Http\Controllers\CommentController::class, 'store'])
+        ->name('comments.store');
+    Route::put('/comments/{comment}', [\App\Http\Controllers\CommentController::class, 'update'])
+        ->name('comments.update');
+    Route::delete('/comments/{comment}', [\App\Http\Controllers\CommentController::class, 'destroy'])
+        ->name('comments.destroy');
 });

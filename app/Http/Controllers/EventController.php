@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Log;
 
 class EventController extends Controller
 {
+    public function index()
+    {
+        $events = Event::with(['game', 'user'])
+            ->where('is_approved', true)
+            ->where('is_cancelled', false)
+            ->where('start_datetime', '>', now())
+            ->orderBy('start_datetime')
+            ->paginate(9);
+
+        $games = Game::orderBy('name')->get();
+
+        return view('events.index', compact('events', 'games'));
+    }
+
     public function create()
     {
         $games = Game::orderBy('name')->get();

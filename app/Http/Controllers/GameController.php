@@ -94,8 +94,8 @@ class GameController extends Controller
         
         // Get upcoming events for this game
         $upcomingEvents = Event::where('game_id', $game->id)
-                            ->where('start_date', '>=', now())
-                            ->orderBy('start_date')
+                            ->where('start_datetime', '>=', now())
+                            ->orderBy('start_datetime')
                             ->take(3)
                             ->get();
         

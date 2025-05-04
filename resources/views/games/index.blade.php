@@ -35,8 +35,8 @@
                     <p class="text-dark-text-secondary mb-4">{{ $game->description }}</p>
                     <div class="flex justify-between items-center">
                         <span class="text-sm text-blue-400">{{ $game->cards_count }} cartes</span>
-                        <a href="{{ route('games.show', $game) }}" class="btn-primary">
-                            Voir les détails
+                        <a href="{{ route('events.find', ['game' => $game->id]) }}" class="btn-primary">
+                            Voir les événements
                         </a>
                     </div>
                 </div>
