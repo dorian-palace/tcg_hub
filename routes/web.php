@@ -1,0 +1,115 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransactionController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// Public routes
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Page de test des routes
+Route::get('/test', function () {
+    return view('test');
+});
+
+// Routes for SPA frontend (Vue.js)
+Route::get('/events/find', function () {
+    return view('events.find');
+})->name('events.find');
+
+// Routes for game catalog
+Route::get('/games', [\App\Http\Controllers\GameController::class, 'index'])->name('games.index');
+Route::get('/games/{game}', [\App\Http\Controllers\GameController::class, 'show'])->name('games.show');
+
+// Routes for card catalog
+Route::get('/cards', [\App\Http\Controllers\CardController::class, 'index'])->name('cards.index');
+
+Route::get('/cards/{id}', function ($id) {
+    return view('cards.show', compact('id'));
+})->name('cards.show');
+
+// Routes d'authentification
+Route::get('/login', [\App\Http\Controllers\Auth\AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [\App\Http\Controllers\Auth\AuthController::class, 'login']);
+Route::post('/logout', [\App\Http\Controllers\Auth\AuthController::class, 'logout'])->name('logout');
+Route::get('/register', [\App\Http\Controllers\Auth\AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [\App\Http\Controllers\Auth\AuthController::class, 'register']);
+
+// Routes protégées nécessitant une authentification
+Route::middleware(['auth'])->group(function () {
+    // User profile routes
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
+
+    Route::get('/profile/edit', function () {
+        return view('profile.edit');
+    })->name('profile.edit');
+
+    Route::post('/profile/update', function () {
+        // This will be handled by a controller later
+    })->name('profile.update');
+
+    // Admin game management routes
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/games/create', [\App\Http\Controllers\GameController::class, 'create'])->name('games.create');
+        Route::post('/games', [\App\Http\Controllers\GameController::class, 'store'])->name('games.store');
+        Route::get('/games/{game}/edit', [\App\Http\Controllers\GameController::class, 'edit'])->name('games.edit');
+        Route::put('/games/{game}', [\App\Http\Controllers\GameController::class, 'update'])->name('games.update');
+        Route::delete('/games/{game}', [\App\Http\Controllers\GameController::class, 'destroy'])->name('games.destroy');
+    });
+
+    // Event management routes
+    Route::get('/my-events', function () {
+        return view('events.my-events');
+    })->name('my-events');
+
+    Route::get('/events/create', function () {
+        return view('events.create');
+    })->name('events.create');
+
+    Route::get('/events/{id}/edit', function ($id) {
+        return view('events.edit', compact('id'));
+    })->name('events.edit');
+
+    Route::get('/events/{id}/participants', function ($id) {
+        return view('events.participants', compact('id'));
+    })->name('events.participants');
+
+    // Collection management routes
+    Route::get('/my-collection', function () {
+        return view('collection.index');
+    })->name('my-collection');
+
+    Route::get('/collection/add', function () {
+        return view('collection.add');
+    })->name('collection.add');
+
+    // Transaction routes
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
+    Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+    Route::post('/transactions', [TransactionController::class, 'store'])->name('transactions.store');
+    Route::get('/transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');
+    Route::patch('/transactions/{transaction}/complete', [TransactionController::class, 'complete'])->name('transactions.complete');
+    Route::patch('/transactions/{transaction}/cancel', [TransactionController::class, 'cancel'])->name('transactions.cancel');
+
+    // Routes for events
+    Route::get('/events/create', [\App\Http\Controllers\EventController::class, 'create'])
+        ->name('events.create');
+    Route::post('/events', [\App\Http\Controllers\EventController::class, 'store'])
+        ->name('events.store');
+    Route::get('/events/{id}', [\App\Http\Controllers\EventController::class, 'show'])
+        ->name('events.show');
+});
