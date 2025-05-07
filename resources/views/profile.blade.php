@@ -18,14 +18,14 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Profil Card -->
         <div class="col-span-1">
-            <div class="bg-[rgb(31,41,55)] rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-light-primary rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
                     <div class="text-center mb-6">
                         @if(Auth::user()->avatar)
                             <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" 
-                                 class="rounded-full w-32 h-32 object-cover mx-auto border-4 border-[rgb(55,65,81)]">
+                                 class="rounded-full w-32 h-32 object-cover mx-auto border-4 border-light-secondary">
                         @else
-                            <div class="rounded-full bg-[rgb(55,65,81)] text-blue-400 w-32 h-32 flex items-center justify-center mx-auto border-4 border-[rgb(55,65,81)]">
+                            <div class="rounded-full bg-light-secondary text-blue-400 w-32 h-32 flex items-center justify-center mx-auto border-4 border-light-secondary">
                                 <span class="text-4xl font-bold">{{ substr(Auth::user()->name, 0, 1) }}</span>
                             </div>
                         @endif
@@ -52,7 +52,7 @@
         <!-- Événements et Transactions -->
         <div class="col-span-2 space-y-6">
             <!-- Événements -->
-            <div class="bg-[rgb(31,41,55)] rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-light-primary rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-xl font-bold text-white">Mes Événements</h2>
@@ -71,7 +71,7 @@
                                     ->get();
                             @endphp
                             @foreach($upcomingEvents as $event)
-                                <div class="bg-[rgb(17,24,39)] rounded-lg p-4 hover:bg-[rgb(55,65,81)] transition-colors">
+                                <div class="bg-light-primary rounded-lg p-4 hover:bg-light-secondary transition-colors">
                                     <div class="flex justify-between items-center">
                                         <div>
                                             <h3 class="text-lg font-semibold text-white">{{ $event->name }}</h3>
@@ -99,7 +99,7 @@
             </div>
 
             <!-- Transactions -->
-            <div class="bg-[rgb(31,41,55)] rounded-lg shadow-lg overflow-hidden">
+            <div class="bg-light-primary rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-xl font-bold text-white">Transactions Récentes</h2>
@@ -112,7 +112,7 @@
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-left text-gray-400 border-b border-[rgb(55,65,81)]">
+                                    <tr class="text-left text-gray-400 border-b border-light-secondary">
                                         <th class="pb-3">Date</th>
                                         <th class="pb-3">Type</th>
                                         <th class="pb-3">Carte</th>
@@ -122,7 +122,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach(Auth::user()->transactions()->orderBy('created_at', 'desc')->take(5)->get() as $transaction)
-                                        <tr class="border-b border-[rgb(55,65,81)] hover:bg-[rgb(17,24,39)] transition-colors">
+                                        <tr class="border-b border-light-secondary hover:bg-light-primary transition-colors">
                                             <td class="py-3 text-gray-300">{{ $transaction->created_at->format('d/m/Y') }}</td>
                                             <td class="py-3 text-gray-300">{{ $transaction->type }}</td>
                                             <td class="py-3 text-gray-300">{{ $transaction->card->name }}</td>

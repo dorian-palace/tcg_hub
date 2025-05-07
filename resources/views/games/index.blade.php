@@ -8,9 +8,9 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($games as $game)
-            <div class="card bg-dark-secondary hover:bg-dark-accent transition-all duration-300">
+            <div class="card bg-light-accent hover:bg-light-secondary transition-all duration-300">
                 <div class="p-6">
-                    <div class="flex items-center justify-center h-48 mb-4 bg-dark-primary rounded-lg">
+                    <div class="flex items-center justify-center h-48 mb-4 bg-light-primary rounded-lg">
                         @if(str_contains(strtolower($game->name), 'pokemon') || str_contains(strtolower($game->name), 'pokémon'))
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png" 
                                  alt="Pokémon TCG" 

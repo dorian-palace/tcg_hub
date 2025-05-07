@@ -35,16 +35,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     @yield('styles')
 </head>
-<body class="min-h-screen bg-[rgb(17,24,39)] text-white">
+<body class="min-h-screen bg-light-primary text-light-text">
     @include('components.navbar')
 
     <main class="container mx-auto px-4 py-8">
-        <div class="bg-[rgb(31,41,55)] rounded-lg shadow-lg p-6">
+        <div class="bg-light-primary rounded-lg shadow-lg p-6">
             @yield('content')
         </div>
     </main>
 
-    <footer class="bg-[rgb(31,41,55)] text-white py-4 mt-5">
+    <footer class="bg-light-accent text-light-text py-4 mt-5">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
