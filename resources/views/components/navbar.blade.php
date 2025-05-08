@@ -1,4 +1,4 @@
-<nav class="bg-[rgb(31,41,55)] text-white shadow-lg">
+<nav style="background-color: rgb(113 131 156);" class=" text-white shadow-lg">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
             <div class="flex items-center">
