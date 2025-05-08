@@ -51,6 +51,23 @@
         </div>
     </div>
 
+    <!-- Events Carousel Section -->
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Prochains grands événements TCG
+                </h2>
+                <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-600 sm:mt-4">
+                    Découvrez les plus grands tournois et événements TCG en France
+                </p>
+            </div>
+            <div id="app">
+                <event-carousel></event-carousel>
+            </div>
+        </div>
+    </div>
+
     <!-- Features Section -->
     <div class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

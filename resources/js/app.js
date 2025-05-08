@@ -8,6 +8,7 @@ import './bootstrap';
 import { createApp } from 'vue';
 import axios from 'axios';
 import EventSearch from './components/event/EventSearch.vue';
+import EventCarousel from './Components/EventCarousel.vue';
 
 /**
  * Configure axios
@@ -22,6 +23,10 @@ window.mapboxToken = mapboxToken;
 /**
  * Create Vue application instances
  */
+
+// Main app
+const app = createApp({});
+app.component('event-carousel', EventCarousel);
 
 // Event search app
 const eventSearchApp = createApp({});
@@ -43,7 +48,7 @@ eventSearchApp.component('event-search', EventSearch);
  * Mount applications to HTML elements
  */
 
-// Main app (if needed)
+// Main app
 if (document.getElementById('app')) {
     app.mount('#app');
 }

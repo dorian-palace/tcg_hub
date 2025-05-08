@@ -7,6 +7,7 @@
     <meta name="description" content="@yield('meta_description', 'Trouvez des événements de jeux de cartes à collectionner, échangez des cartes et participez à des tournois')">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         tailwind.config = {
             darkMode: 'class',
