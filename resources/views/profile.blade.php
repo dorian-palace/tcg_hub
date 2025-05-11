@@ -36,29 +36,16 @@
                             {{ Auth::user()->city ? Auth::user()->city . ', ' : '' }}{{ Auth::user()->country }}
                         </p>
                     </div>
-
-                    <div class="space-y-3">
-                        <a href="{{ route('my-collection') }}" class="btn-primary w-full text-center">
-                            <i class="fas fa-folder mr-2"></i> Ma Collection
-                        </a>
-                        <a href="{{ route('transactions.index') }}" class="btn-secondary w-full text-center">
-                            <i class="fas fa-exchange-alt mr-2"></i> Mes Transactions
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Événements et Transactions -->
-        <div class="col-span-2 space-y-6">
-            <!-- Événements -->
+        <!-- Événements -->
+        <div class="col-span-2">
             <div class="bg-light-primary rounded-lg shadow-lg overflow-hidden">
                 <div class="p-6">
-                    <div class="flex justify-between items-center mb-6">
+                    <div class="mb-6">
                         <h2 class="text-xl font-bold text-white">Mes Événements</h2>
-                        <a href="{{ route('my-events') }}" class="text-blue-400 hover:text-blue-300 transition-colors">
-                            Voir tous
-                        </a>
                     </div>
                     
                     @if(Auth::user()->organizedEvents && Auth::user()->organizedEvents->count() > 0)
@@ -70,6 +57,7 @@
                                     ->take(3)
                                     ->get();
                             @endphp
+                            
                             @foreach($upcomingEvents as $event)
                                 <div class="bg-light-primary rounded-lg p-4 hover:bg-light-secondary transition-colors">
                                     <div class="flex justify-between items-center">
@@ -92,56 +80,6 @@
                             <p class="text-gray-400 mb-4">Vous n'avez pas encore organisé d'événements.</p>
                             <a href="{{ route('events.create') }}" class="btn-primary">
                                 Créer votre premier événement
-                            </a>
-                        </div>
-                    @endif
-                </div>
-            </div>
-
-            <!-- Transactions -->
-            <div class="bg-light-primary rounded-lg shadow-lg overflow-hidden">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold text-white">Transactions Récentes</h2>
-                        <a href="{{ route('transactions.index') }}" class="text-blue-400 hover:text-blue-300 transition-colors">
-                            Voir toutes
-                        </a>
-                    </div>
-                    
-                    @if(Auth::user()->transactions && Auth::user()->transactions->count() > 0)
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="text-left text-gray-400 border-b border-light-secondary">
-                                        <th class="pb-3">Date</th>
-                                        <th class="pb-3">Type</th>
-                                        <th class="pb-3">Carte</th>
-                                        <th class="pb-3">Montant</th>
-                                        <th class="pb-3"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach(Auth::user()->transactions()->orderBy('created_at', 'desc')->take(5)->get() as $transaction)
-                                        <tr class="border-b border-light-secondary hover:bg-light-primary transition-colors">
-                                            <td class="py-3 text-gray-300">{{ $transaction->created_at->format('d/m/Y') }}</td>
-                                            <td class="py-3 text-gray-300">{{ $transaction->type }}</td>
-                                            <td class="py-3 text-gray-300">{{ $transaction->card->name }}</td>
-                                            <td class="py-3 text-gray-300">{{ $transaction->amount }}€</td>
-                                            <td class="py-3">
-                                                <a href="{{ route('transactions.show', $transaction) }}" class="text-blue-400 hover:text-blue-300 transition-colors">
-                                                    Détails
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <div class="text-center py-8">
-                            <p class="text-gray-400 mb-4">Vous n'avez pas encore de transactions.</p>
-                            <a href="{{ route('transactions.create') }}" class="btn-primary">
-                                Créer une transaction
                             </a>
                         </div>
                     @endif

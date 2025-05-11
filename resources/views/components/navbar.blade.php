@@ -40,9 +40,6 @@
                                 <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 w-48 bg-[rgb(31,41,55)] rounded-md shadow-lg py-1 z-50">
                                     <a href="{{ route('profile') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Tableau de bord</a>
                                     <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Modifier mon profil</a>
-                                    <a href="{{ route('my-collection') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Ma collection</a>
-                                    <a href="{{ route('my-events') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Mes événements</a>
-                                    <a href="{{ route('transactions.index') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Mes transactions</a>
                                     @if(Auth::user()->isAdmin())
                                         <div class="border-t border-[rgb(55,65,81)] my-1"></div>
                                         <a href="{{ route('games.create') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Ajouter un jeu</a>
