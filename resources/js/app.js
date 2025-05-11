@@ -8,7 +8,7 @@ import './bootstrap';
 import { createApp } from 'vue';
 import axios from 'axios';
 import EventSearch from './components/event/EventSearch.vue';
-import EventCarousel from './Components/EventCarousel.vue';
+import EventCarousel from './components/EventCarousel.vue';
 
 /**
  * Configure axios
