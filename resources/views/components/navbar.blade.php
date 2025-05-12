@@ -38,11 +38,11 @@
                                 </button>
 
                                 <div x-show="open" x-cloak x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 w-48 bg-[rgb(31,41,55)] rounded-md shadow-lg py-1 z-50">
-                                    <a href="{{ route('profile') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Tableau de bord</a>
-                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Modifier mon profil</a>
+                                    <a href="{{ route('profile') }}" class="block px-4 py-2 text-white hover:bg-[rgb(75,85,101)]">Tableau de bord</a>
+                                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-white hover:bg-[rgb(75,85,101)]">Modifier mon profil</a>
                                     @if(Auth::user()->isAdmin())
                                         <div class="border-t border-[rgb(55,65,81)] my-1"></div>
-                                        <a href="{{ route('games.create') }}" class="block px-4 py-2 text-white hover:bg-[rgb(55,65,81)]">Ajouter un jeu</a>
+                                        <a href="{{ route('games.create') }}" class="block px-4 py-2 text-white hover:bg-[rgb(75,85,101)]">Ajouter un jeu</a>
                                     @endif
                                     <div class="border-t border-[rgb(55,65,81)] my-1"></div>
                                     <form action="{{ route('logout') }}" method="POST" class="block">
@@ -63,12 +63,12 @@
         <!-- Mobile menu -->
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="/" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('/') ? 'bg-[rgb(55,65,81)]' : '' }}">Accueil</a>
-                <a href="{{ route('games.index') }}" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('games*') ? 'bg-[rgb(55,65,81)]' : '' }}">Jeux</a>
+                <a href="/" class="block px-3 py-2 text-white hover:bg-[rgb(75,85,101)] rounded-md {{ request()->is('/') ? 'bg-[rgb(75,85,101)]' : '' }}">Accueil</a>
+                <a href="{{ route('games.index') }}" class="block px-3 py-2 text-white hover:bg-[rgb(75,85,101)] rounded-md {{ request()->is('games*') ? 'bg-[rgb(75,85,101)]' : '' }}">Jeux</a>
                 {{-- <a href="{{ route('cards.index') }}" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('cards*') ? 'bg-[rgb(55,65,81)]' : '' }}">Cartes</a> --}}
-                <a href="{{ route('events.find') }}" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md {{ request()->is('events/find*') ? 'bg-[rgb(55,65,81)]' : '' }}">Événements</a>
+                <a href="{{ route('events.find') }}" class="block px-3 py-2 text-white hover:bg-[rgb(75,85,101)] rounded-md {{ request()->is('events/find*') ? 'bg-[rgb(75,85,101)]' : '' }}">Événements</a>
                 @auth
-                    <a href="{{ route('events.create') }}" class="block px-3 py-2 text-white hover:bg-[rgb(55,65,81)] rounded-md">Créer un événement</a>
+                    <a href="{{ route('events.create') }}" class="block px-3 py-2 text-white hover:bg-[rgb(75,85,101)] rounded-md">Créer un événement</a>
                 @endauth
             </div>
         </div>

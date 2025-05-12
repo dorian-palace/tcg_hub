@@ -35,7 +35,7 @@
                     <p class="text-dark-text-secondary mb-4">{{ $game->description }}</p>
                     <div class="flex justify-between items-center">
                         <span class="text-sm text-blue-400">{{ $game->cards_count }} cartes</span>
-                        <a href="{{ route('events.find', ['game' => $game->id]) }}" class="btn-primary">
+                        <a href="{{ route('events.find', ['game' => $game->id]) }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                             Voir les événements
                         </a>
                     </div>
