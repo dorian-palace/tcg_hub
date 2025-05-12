@@ -140,7 +140,13 @@
                         <div class="flex justify-between items-start">
                             <div class="flex items-center space-x-3">
                                 <div class="flex-shrink-0">
-                                    <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name={{ urlencode($comment->user->name) }}&background=4B5563&color=fff" alt="{{ $comment->user->name }}">
+                                    @if($comment->user->avatar)
+                                        <img class="h-10 w-10 rounded-full object-cover" src="{{ $comment->user->avatar }}" alt="{{ $comment->user->name }}">
+                                    @else
+                                        <div class="h-10 w-10 rounded-full bg-light-secondary text-blue-400 flex items-center justify-center">
+                                            <span class="text-sm font-bold">{{ substr($comment->user->name, 0, 1) }}</span>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div>
                                     <p class="font-medium text-gray-900">{{ $comment->user->name }}</p>
@@ -195,7 +201,13 @@
                                         <div class="flex justify-between items-start">
                                             <div class="flex items-center space-x-3">
                                                 <div class="flex-shrink-0">
-                                                    <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name={{ urlencode($reply->user->name) }}&background=4B5563&color=fff" alt="{{ $reply->user->name }}">
+                                                    @if($reply->user->avatar)
+                                                        <img class="h-8 w-8 rounded-full object-cover" src="{{ $reply->user->avatar }}" alt="{{ $reply->user->name }}">
+                                                    @else
+                                                        <div class="h-8 w-8 rounded-full bg-light-secondary text-blue-400 flex items-center justify-center">
+                                                            <span class="text-xs font-bold">{{ substr($reply->user->name, 0, 1) }}</span>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                                 <div>
                                                     <p class="font-medium text-gray-900">{{ $reply->user->name }}</p>

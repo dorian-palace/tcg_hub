@@ -6,9 +6,32 @@
         <div class="bg-light-primary rounded-lg shadow-lg p-6">
             <h1 class="text-2xl font-bold text-white mb-6">Modifier mon profil</h1>
 
-            <form method="POST" action="{{ route('profile.update') }}" class="space-y-6">
+            <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="space-y-6">
                 @csrf
                 <div class="space-y-4">
+                    <!-- Photo de profil -->
+                    <div class="flex items-center space-x-6">
+                        <div class="flex-shrink-0">
+                            @if(Auth::user()->avatar)
+                                <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" 
+                                     class="h-24 w-24 rounded-full object-cover border-4 border-light-secondary">
+                            @else
+                                <div class="h-24 w-24 rounded-full bg-light-secondary text-blue-400 flex items-center justify-center border-4 border-light-secondary">
+                                    <span class="text-3xl font-bold">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                                </div>
+                            @endif
+                        </div>
+                        <div>
+                            <label for="avatar" class="block text-sm font-medium text-gray-300">Photo de profil</label>
+                            <input type="file" id="avatar" name="avatar" accept="image/*"
+                                class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            <p class="mt-1 text-sm text-gray-400">PNG, JPG ou GIF jusqu'à 2MB</p>
+                            @error('avatar')
+                                <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-300">Nom</label>
                         <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" required autofocus

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -23,7 +24,19 @@ class ProfileController extends Controller
             'bio' => 'nullable|string|max:1000',
             'location' => 'nullable|string|max:255',
             'website' => 'nullable|url|max:255',
+            'avatar' => 'nullable|image|max:2048', // 2MB max
         ]);
+
+        if ($request->hasFile('avatar')) {
+            // Supprimer l'ancienne photo si elle existe
+            if ($user->avatar && Storage::disk('public')->exists(str_replace('/storage/', '', $user->avatar))) {
+                Storage::disk('public')->delete(str_replace('/storage/', '', $user->avatar));
+            }
+            
+            // Sauvegarder la nouvelle photo
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $validated['avatar'] = Storage::url($path);
+        }
 
         $user->update($validated);
 
