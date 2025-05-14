@@ -22,8 +22,11 @@ class ProfileController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'bio' => 'nullable|string|max:1000',
-            'location' => 'nullable|string|max:255',
-            'website' => 'nullable|url|max:255',
+            'address' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:100',
+            'postal_code' => 'nullable|string|max:20',
+            'country' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
             'avatar' => 'nullable|image|max:2048', // 2MB max
         ]);
 
@@ -33,8 +36,13 @@ class ProfileController extends Controller
                 Storage::disk('public')->delete(str_replace('/storage/', '', $user->avatar));
             }
             
-            // Sauvegarder la nouvelle photo
-            $path = $request->file('avatar')->store('avatars', 'public');
+            // Générer un nom de fichier unique
+            $fileName = 'avatar_' . $user->id . '_' . time() . '.' . $request->file('avatar')->getClientOriginalExtension();
+            
+            // Sauvegarder la nouvelle photo dans le dossier avatars
+            $path = $request->file('avatar')->storeAs('avatars', $fileName, 'public');
+            
+            // Stocker le chemin complet dans la base de données
             $validated['avatar'] = Storage::url($path);
         }
 

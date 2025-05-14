@@ -56,12 +56,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/update', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     // Admin game management routes
-    Route::middleware(['admin'])->group(function () {
-        Route::get('/games/create', [\App\Http\Controllers\GameController::class, 'create'])->name('games.create');
-        Route::post('/games', [\App\Http\Controllers\GameController::class, 'store'])->name('games.store');
-        Route::get('/games/{game}/edit', [\App\Http\Controllers\GameController::class, 'edit'])->name('games.edit');
-        Route::put('/games/{game}', [\App\Http\Controllers\GameController::class, 'update'])->name('games.update');
-        Route::delete('/games/{game}', [\App\Http\Controllers\GameController::class, 'destroy'])->name('games.destroy');
+    Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
+        Route::get('/admin/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/admin/games/create', [\App\Http\Controllers\GameController::class, 'create'])->name('games.create');
+        Route::post('/admin/games', [\App\Http\Controllers\GameController::class, 'store'])->name('games.store');
+        Route::get('/admin/games/{game}/edit', [\App\Http\Controllers\GameController::class, 'edit'])->name('games.edit');
+        Route::put('/admin/games/{game}', [\App\Http\Controllers\GameController::class, 'update'])->name('games.update');
+        Route::delete('/admin/games/{game}', [\App\Http\Controllers\GameController::class, 'destroy'])->name('games.destroy');
     });
 
     // Event management routes

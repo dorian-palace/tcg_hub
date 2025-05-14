@@ -42,6 +42,7 @@
                                     <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-white hover:bg-[rgb(75,85,101)]">Modifier mon profil</a>
                                     @if(Auth::user()->isAdmin())
                                         <div class="border-t border-[rgb(55,65,81)] my-1"></div>
+                                        <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 text-white hover:bg-[rgb(75,85,101)]">Tableau de bord admin</a>
                                         <a href="{{ route('games.create') }}" class="block px-4 py-2 text-white hover:bg-[rgb(75,85,101)]">Ajouter un jeu</a>
                                     @endif
                                     <div class="border-t border-[rgb(55,65,81)] my-1"></div>

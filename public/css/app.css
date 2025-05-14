@@ -1,0 +1,159 @@
+/* Base styles */
+:root {
+    --primary-color: #3B82F6;
+    --primary-hover: #2563EB;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F3F4F6;
+    --border-color: #E5E7EB;
+}
+
+/* General text colors */
+body {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+}
+
+p,
+span,
+label {
+    color: var(--text-primary);
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Cards and containers */
+.card,
+.bg-light-secondary {
+    background-color: var(--bg-secondary);
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Error messages */
+.text-red-600 {
+    color: #DC2626;
+}
+
+/* Success messages */
+.text-green-600 {
+    color: #059669;
+}
+
+/* Navigation */
+.nav-link {
+    color: var(--text-primary);
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Tables */
+table {
+    color: var(--text-primary);
+}
+
+th {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+}
+
+/* Modals */
+.modal-content {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.modal-header {
+    border-bottom-color: var(--border-color);
+}
+
+.modal-footer {
+    border-top-color: var(--border-color);
+}
+
+/* Custom utility classes */
+.text-primary {
+    color: var(--text-primary) !important;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.bg-primary {
+    background-color: var(--bg-primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--bg-secondary) !important;
+}
+
+/* Form labels */
+label {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Form validation messages */
+.invalid-feedback {
+    color: #DC2626;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
+}

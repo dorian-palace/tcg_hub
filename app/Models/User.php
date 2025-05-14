@@ -119,7 +119,7 @@ class User extends Authenticatable
      */
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->is_admin === true;
     }
 
     public function isOrganizer(): bool

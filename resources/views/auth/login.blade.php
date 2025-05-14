@@ -63,16 +63,6 @@
                     </a>
                 </p>
             </div>
-
-            @if(config('app.env') === 'local')
-                <div class="mt-6 p-4 bg-light-secondary rounded-md">
-                    <h3 class="text-sm font-medium text-light-text mb-2">Comptes de test</h3>
-                    <div class="space-y-2">
-                        <p class="text-sm text-light-text-secondary">Admin: admin@example.com / password</p>
-                        <p class="text-sm text-light-text-secondary">User: user@example.com / password</p>
-                    </div>
-                </div>
-            @endif
         </div>
     </div>
 </div>
