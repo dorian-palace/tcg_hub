@@ -89,14 +89,7 @@ const events = [
         description: "Événement pop culture avec une section dédiée aux TCG, incluant des stands de vente, des tournois et des animations.",
         image: "/images/events/toulouse_game_show.png" // Image locale pour le TGS 2025
     },
-    {
-        id: 8,
-        title: "Paris Manga & Sci-Fi Show 2025 (Printemps)",
-        date: "Février/Mars 2025 (Dates à confirmer)",
-        location: "Paris",
-        description: "Convention axée sur le manga, l'anime et la culture geek avec une zone dédiée aux TCG et aux jeux de cartes à collectionner.",
-        image: "/images/events/TGS_Paris_blanc test2.png"
-    },
+
     {
         id: 9,
         title: "Paris Manga & Sci-Fi Show 2025 (Automne)",
