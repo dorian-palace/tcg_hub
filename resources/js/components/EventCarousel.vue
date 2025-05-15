@@ -17,7 +17,13 @@
         >
             <swiper-slide v-for="event in events" :key="event.id">
                 <div class="event-card">
-                    <img :src="event.image" :alt="event.title" class="event-image">
+                    <img 
+                        :src="event.image" 
+                        :alt="event.title" 
+                        class="event-image"
+                        loading="lazy"
+                        @error="event.image = '/images/placeholder.jpg'"
+                    >
                     <div class="event-content">
                         <h3 class="event-title">{{ event.title }}</h3>
                         <p class="event-date">{{ event.date }}</p>
@@ -40,28 +46,65 @@ import 'swiper/css/navigation';
 const events = [
     {
         id: 1,
-        title: "Championnat de France Pokémon TCG",
-        date: "15-16 Juin 2024",
+        title: "Japan Expo Paris 2025",
+        date: "Juillet 2025 (Dates à confirmer)",
+        location: "Paris Nord Villepinte",
+        description: "Le plus grand événement de la culture japonaise en Europe avec des tournois Pokémon TCG, Yu-Gi-Oh! et Magic: The Gathering.",
+        image: "/images/events/paris-logo.png"
+    },
+    // {
+    //     id: 3,
+    //     title: "Magic: The Gathering Pro Tour France 2025",
+    //     date: "Juillet 2025 (Dates et lieu à confirmer)",
+    //     location: "À déterminer (probablement Lyon ou une autre grande ville)",
+    //     description: "Tournoi majeur de Magic: The Gathering avec des récompenses importantes et des joueurs professionnels du monde entier.",
+    // },
+    // {
+    //     id: 4,
+    //     title: "Yu-Gi-Oh! Championship Series France 2025",
+    //     date: "Août 2025 (Dates et lieu à confirmer)",
+    //     location: "À déterminer (pourrait revenir à Marseille ou une autre ville)",
+    //     description: "Compétition nationale Yu-Gi-Oh! de grande envergure avec des prix exclusifs et des opportunités de se qualifier pour les Championnats du Monde.",
+    // },
+    // {
+    //     id: 5,
+    //     title: "Foire du Jeu de Paris 2025",
+    //     date: "Juin 2025 (Dates à confirmer)",
+    //     location: "Paris",
+    //     description: "Grand événement dédié aux jeux sous toutes leurs formes, incluant des tournois de TCG, des démonstrations et des rencontres avec des acteurs de l'industrie.",
+    // },
+    {
+        id: 6,
+        title: "Pocardheim 2025",
+        date: "5-6 Juillet 2025",
+        location: "Heimsbrunn (Alsace)",
+        description: "Festival dédié aux TCG avec un focus sur la collection, l'échange, la vente et la gradation de cartes. Événement caritatif.",
+        image: "/images/events/pokheimon-300x100-1.png"
+    },
+    {
+        id: 7,
+        title: "Toulouse Game Show (TGS) 2025",
+        date: "Novembre/Décembre 2025 (Dates à confirmer)",
+        location: "Toulouse",
+        description: "Événement pop culture avec une section dédiée aux TCG, incluant des stands de vente, des tournois et des animations.",
+        image: "/images/events/toulouse_game_show.png" // Image locale pour le TGS 2025
+    },
+    {
+        id: 8,
+        title: "Paris Manga & Sci-Fi Show 2025 (Printemps)",
+        date: "Février/Mars 2025 (Dates à confirmer)",
         location: "Paris",
-        description: "Le plus grand tournoi Pokémon TCG de France",
-        image: "https://placehold.co/800x400/2563eb/ffffff?text=Pokemon+Championship"
+        description: "Convention axée sur le manga, l'anime et la culture geek avec une zone dédiée aux TCG et aux jeux de cartes à collectionner.",
+        image: "/images/events/TGS_Paris_blanc test2.png"
     },
     {
-        id: 2,
-        title: "Grand Prix Magic: The Gathering",
-        date: "20-21 Juillet 2024",
-        location: "Lyon",
-        description: "Tournoi majeur de Magic: The Gathering",
-        image: "https://placehold.co/800x400/2563eb/ffffff?text=Magic+GP"
+        id: 9,
+        title: "Paris Manga & Sci-Fi Show 2025 (Automne)",
+        date: "Octobre/Novembre 2025 (Dates à confirmer)",
+        location: "Paris",
+        description: "Deuxième édition annuelle de cette convention populaire avec une section TCG pour les fans et les collectionneurs.",
+        image: "/images/events/TGS_Paris_blanc test2.png"
     },
-    {
-        id: 3,
-        title: "Yu-Gi-Oh! Championship Series",
-        date: "10-11 Août 2024",
-        location: "Marseille",
-        description: "Compétition nationale Yu-Gi-Oh!",
-        image: "https://placehold.co/800x400/2563eb/ffffff?text=Yu-Gi-Oh+Championship"
-    }
 ];
 </script>
 
