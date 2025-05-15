@@ -18,7 +18,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('events.store') }}" class="space-y-6">
+            <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data" class="space-y-6">
                 @csrf
                 <div class="space-y-4">
                     <div>
@@ -26,6 +26,16 @@
                         <input type="text" id="title" name="title" value="{{ old('title') }}" required
                             class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
                         @error('title')
+                            <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="image" class="block text-sm font-medium text-black">Image de l'événement</label>
+                        <input type="file" id="image" name="image" accept="image/*"
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                        <p class="mt-1 text-sm text-gray-500">Format accepté : JPG, PNG, GIF. Taille maximale : 5MB</p>
+                        @error('image')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
                     </div>

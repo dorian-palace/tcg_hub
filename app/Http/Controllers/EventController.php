@@ -7,6 +7,7 @@ use App\Models\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -49,12 +50,20 @@ class EventController extends Controller
                 'event_type' => 'required|in:tournament,casual_play,trade,release,other',
                 'entry_fee' => 'nullable|numeric|min:0',
                 'prizes' => 'nullable|string',
+                'image' => 'nullable|image|max:5120', // 5MB max
             ]);
 
             $event = new Event($validated);
             $event->user_id = Auth::id();
-            $event->is_approved = false;
+            // TODO: Implémenter la logique d'approbation des événements
+            $event->is_approved = true; // Temporairement mis à true en attendant l'implémentation
             $event->is_cancelled = false;
+
+            if ($request->hasFile('image')) {
+                $fileName = 'event_' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $path = $request->file('image')->storeAs('events', $fileName, 'public');
+                $event->image = Storage::url($path);
+            }
             
             if ($event->save()) {
                 Log::info('Event created successfully', [
@@ -101,10 +110,10 @@ class EventController extends Controller
     public function find(Request $request)
     {
         $query = Event::query()
-            ->with(['game', 'user'])
-            ->where('is_approved', true)
-            ->where('is_cancelled', false)
-            ->where('start_datetime', '>', now());
+            ->with(['game', 'user']);
+            // ->where('is_approved', true)
+            // ->where('is_cancelled', false)
+            // ->where('start_datetime', '>', now());
 
         if ($request->filled('game')) {
             $query->where('game_id', $request->game);
@@ -151,7 +160,19 @@ class EventController extends Controller
                 'entry_fee' => 'nullable|numeric|min:0',
                 'prizes' => 'nullable|string',
                 'is_cancelled' => 'boolean',
+                'image' => 'nullable|image|max:5120', // 5MB max
             ]);
+
+            if ($request->hasFile('image')) {
+                // Supprimer l'ancienne image si elle existe
+                if ($event->image && Storage::disk('public')->exists(str_replace('/storage/', '', $event->image))) {
+                    Storage::disk('public')->delete(str_replace('/storage/', '', $event->image));
+                }
+
+                $fileName = 'event_' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+                $path = $request->file('image')->storeAs('events', $fileName, 'public');
+                $validated['image'] = Storage::url($path);
+            }
 
             $event->update($validated);
 

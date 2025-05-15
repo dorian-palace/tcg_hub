@@ -14,6 +14,14 @@
                 <h2 class="text-2xl font-bold text-gray-900">{{ $event->title }}</h2>
             </div>
 
+            @if($event->image)
+                <div class="relative w-full h-48 sm:h-64 md:h-80 lg:h-96 bg-gray-100">
+                    <img src="{{ $event->image }}" 
+                         alt="{{ $event->title }}" 
+                         class="w-full h-full object-contain">
+                </div>
+            @endif
+
             <div class="p-6 space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-4">

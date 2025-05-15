@@ -115,16 +115,23 @@ const events = [
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .event-image {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #f3f4f6; /* bg-gray-100 */
+    padding: 0.5rem;
 }
 
 .event-content {
     padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .event-title {

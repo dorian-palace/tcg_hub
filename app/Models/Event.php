@@ -35,6 +35,7 @@ class Event extends Model
         'prizes',
         'is_approved',
         'is_cancelled',
+        'image',
     ];
 
     /**
