@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Connexion - TCG HUB')
-@section('meta_description', 'Connectez-vous à votre compte TCG HUB')
+@section('title', 'Connexion - TCGalaxy')
+@section('meta_description', 'Connectez-vous à votre compte TCGalaxy')
 
 @section('content')
 <div class="min-h-screen bg-light-primary py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md mx-auto">
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-light-text">Bienvenue sur TCG Hub</h1>
+            <h1 class="text-3xl font-bold text-light-text">Bienvenue sur TCGalaxy</h1>
             <p class="mt-2 text-light-text-secondary">Connectez-vous pour accéder à votre compte</p>
         </div>
 

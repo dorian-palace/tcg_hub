@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Mes événements - TCG HUB')
-@section('meta_description', 'Gérez vos événements TCG sur TCG HUB')
+@section('title', 'Mes événements - TCGalaxy')
+@section('meta_description', 'Gérez vos événements TCG sur TCGalaxy')
 
 @section('content')
 <div class="min-h-screen bg-[rgb(17,24,39)] py-12 px-4 sm:px-6 lg:px-8">

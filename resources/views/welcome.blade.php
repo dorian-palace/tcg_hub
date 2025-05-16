@@ -36,7 +36,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
-                    Bienvenue sur TCG HUB
+                    Bienvenue sur TCGalaxy
                 </h1>
                 <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-600 sm:mt-4">
                     La plateforme ultime pour les amateurs de jeux de cartes à collectionner.<br>
@@ -76,7 +76,7 @@
                     Nos fonctionnalités
                 </h2>
                 <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-600 sm:mt-4">
-                    Découvrez tout ce que TCG HUB a à vous offrir
+                    Découvrez tout ce que TCGalaxy a à vous offrir
                 </p>
             </div>
 
@@ -129,7 +129,7 @@
                         Rejoignez des milliers de joueurs et collectionneurs partageant votre passion pour les TCG.
                     </p>
                     <p class="mt-4 text-gray-600">
-                        Que vous soyez débutant ou joueur expérimenté, TCG HUB vous offre un espace pour partager votre passion, améliorer votre collection et rencontrer d'autres amateurs de jeux de cartes.
+                        Que vous soyez débutant ou joueur expérimenté, TCGalaxy vous offre un espace pour partager votre passion, améliorer votre collection et rencontrer d'autres amateurs de jeux de cartes.
                     </p>
                     <div class="mt-8">
                         <a href="/register" class="inline-block px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Nous rejoindre</a>

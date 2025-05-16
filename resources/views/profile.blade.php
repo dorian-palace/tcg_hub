@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Mon tableau de bord - TCG HUB')
-@section('meta_description', 'Gérez votre profil, vos événements, votre collection et vos transactions sur TCG HUB')
+@section('title', 'Mon tableau de bord - TCGalaxy')
+@section('meta_description', 'Gérez votre profil, vos événements, votre collection et vos transactions sur TCGalaxy')
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-8">
         <div>
             <h1 class="text-3xl font-bold text-white">Mon Tableau de Bord</h1>
-            <p class="text-gray-400">Gérez votre profil et vos activités sur TCG HUB</p>
+            <p class="text-gray-400">Gérez votre profil et vos activités sur TCGalaxy</p>
         </div>
         <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
             <i class="fas fa-user-edit mr-2"></i> Modifier mon profil

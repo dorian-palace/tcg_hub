@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'TCGalaxy') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -59,7 +59,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h5 class="text-xl font-bold mb-4">TCG HUB</h5>
+                    <h5 class="text-xl font-bold mb-4">TCGalaxy</h5>
                     <p>La plateforme pour tous les amateurs de jeux de cartes à collectionner.</p>
                 </div>
                 <div>
@@ -81,7 +81,7 @@
             </div>
             <hr class="my-8 border-[rgb(55,65,81)]">
             <div class="text-center">
-                <p>&copy; 2025 TCG HUB. Tous droits réservés.</p>
+                <p>&copy; 2025 TCGalaxy. Tous droits réservés.</p>
             </div>
         </div>
     </footer>

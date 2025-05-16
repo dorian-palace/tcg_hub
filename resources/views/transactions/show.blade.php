@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Détails de la Transaction - TCG HUB')
-@section('meta_description', 'Détails de votre transaction de cartes à collectionner sur TCG HUB')
+@section('title', 'Détails de la Transaction - TCGalaxy')
+@section('meta_description', 'Détails de votre transaction de cartes à collectionner sur TCGalaxy')
 
 @section('content')
 <div class="container py-5">

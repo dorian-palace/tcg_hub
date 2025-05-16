@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Événements - TCG HUB')
+@section('title', 'Événements - TCGalaxy')
 @section('meta_description', 'Découvrez les événements de jeux de cartes à collectionner près de chez vous')
 
 @section('content')

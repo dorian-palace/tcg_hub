@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-16">
             <div class="flex items-center">
-                <a href="/" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">TCG HUB</a>
+                <a href="/" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">TCGalaxy</a>
             </div>
 
             <!-- Mobile menu button -->

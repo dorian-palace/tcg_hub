@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Inscription - TCG HUB')
-@section('meta_description', 'Créez un compte sur TCG HUB pour participer à des événements de jeux de cartes à collectionner')
+@section('title', 'Inscription - TCGalaxy')
+@section('meta_description', 'Créez un compte sur TCGalaxy pour participer à des événements de jeux de cartes à collectionner')
 
 @section('content')
 <div class="min-h-screen bg-light-primary py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md mx-auto">
         <div class="text-center mb-8">
             <h1 class="text-3xl font-bold text-light-text">Créer un compte</h1>
-            <p class="mt-2 text-light-text-secondary">Rejoignez la communauté TCG Hub</p>
+            <p class="mt-2 text-light-text-secondary">Rejoignez la communauté TCGalaxy</p>
         </div>
 
         <div class="bg-light-primary rounded-lg shadow-lg p-6">

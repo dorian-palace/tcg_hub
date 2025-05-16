@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Ma collection - TCG HUB')
-@section('meta_description', 'Gérez votre collection de cartes TCG sur TCG HUB')
+@section('title', 'Ma collection - TCGalaxy')
+@section('meta_description', 'Gérez votre collection de cartes TCG sur TCGalaxy')
 
 @section('content')
 <div class="container py-5">
