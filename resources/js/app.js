@@ -9,6 +9,7 @@ import { createApp } from 'vue';
 import axios from 'axios';
 import EventSearch from './components/event/EventSearch.vue';
 import EventCarousel from './components/EventCarousel.vue';
+import ForumHighlight from './components/ForumHighlight.vue';
 
 /**
  * Configure axios
@@ -27,6 +28,7 @@ window.mapboxToken = mapboxToken;
 // Main app
 const app = createApp({});
 app.component('event-carousel', EventCarousel);
+app.component('forum-highlight', ForumHighlight);
 
 // Event search app
 const eventSearchApp = createApp({});
@@ -51,6 +53,13 @@ eventSearchApp.component('event-search', EventSearch);
 // Main app
 if (document.getElementById('app')) {
     app.mount('#app');
+}
+
+// Forum highlight app
+if (document.getElementById('vue-forum-highlight')) {
+    const forumApp = createApp({});
+    forumApp.component('forum-highlight', ForumHighlight);
+    forumApp.mount('#vue-forum-highlight');
 }
 
 // Event search app

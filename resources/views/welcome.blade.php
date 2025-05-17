@@ -51,6 +51,7 @@
         </div>
     </div>
 
+
     <!-- Events Carousel Section -->
     <div class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,6 +147,15 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Forum Highlight Section -->
+    <div id="vue-forum-highlight" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <forum-highlight
+            :forums-count="{{ \App\Models\Forum::count() }}"
+            :topics-count="{{ \App\Models\ForumTopic::count() }}"
+            forum-url="{{ route('forums.index') }}"
+        ></forum-highlight>
     </div>
 
     <!-- Popular Games Section -->
