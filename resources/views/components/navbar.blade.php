@@ -21,6 +21,7 @@
                     <a href="{{ route('games.index') }}" class="text-white hover:text-blue-300 transition-all duration-300 {{ request()->is('games*') ? 'text-blue-300 font-medium' : '' }}">Jeux</a>
                     {{-- <a href="{{ route('cards.index') }}" class="text-white hover:text-blue-300 transition-all duration-300 {{ request()->is('cards*') ? 'text-blue-300 font-medium' : '' }}">Cartes</a> --}}
                     <a href="{{ route('events.find') }}" class="text-white hover:text-blue-300 transition-all duration-300 {{ request()->is('events/find*') ? 'text-blue-300 font-medium' : '' }}">Événements</a>
+                    <a href="{{ route('forums.index') }}" class="text-white hover:text-blue-300 transition-all duration-300 {{ request()->is('forums*') ? 'text-blue-300 font-medium' : '' }}">Forum</a>
                 </div>
 
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -68,6 +69,7 @@
                 <a href="{{ route('games.index') }}" class="block px-3 py-2 text-white hover:bg-slate-700 rounded-lg transition-colors duration-200 {{ request()->is('games*') ? 'bg-slate-700' : '' }}">Jeux</a>
                 {{-- <a href="{{ route('cards.index') }}" class="block px-3 py-2 text-white hover:bg-slate-700 rounded-lg transition-colors duration-200 {{ request()->is('cards*') ? 'bg-slate-700' : '' }}">Cartes</a> --}}
                 <a href="{{ route('events.find') }}" class="block px-3 py-2 text-white hover:bg-slate-700 rounded-lg transition-colors duration-200 {{ request()->is('events/find*') ? 'bg-slate-700' : '' }}">Événements</a>
+                <a href="{{ route('forums.index') }}" class="block px-3 py-2 text-white hover:bg-slate-700 rounded-lg transition-colors duration-200 {{ request()->is('forums*') ? 'bg-slate-700' : '' }}">Forum</a>
                 @auth
                     <a href="{{ route('events.create') }}" class="block px-3 py-2 text-white hover:bg-slate-700 rounded-lg transition-colors duration-200">Créer un événement</a>
                 @endauth

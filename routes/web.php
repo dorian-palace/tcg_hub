@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ForumController;
+use App\Http\Controllers\ForumTopicController;
+use App\Http\Controllers\ForumPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,4 +123,28 @@ Route::middleware(['auth'])->group(function () {
         ->name('comments.update');
     Route::delete('/comments/{comment}', [\App\Http\Controllers\CommentController::class, 'destroy'])
         ->name('comments.destroy');
+
+    // Forum Routes
+    Route::get('/forums', [ForumController::class, 'index'])->name('forums.index');
+    Route::get('/forums/create', [ForumController::class, 'create'])->name('forums.create');
+    Route::post('/forums', [ForumController::class, 'store'])->name('forums.store');
+    Route::get('/forums/{forum}', [ForumController::class, 'show'])->name('forums.show');
+    Route::get('/forums/{forum}/edit', [ForumController::class, 'edit'])->name('forums.edit');
+    Route::put('/forums/{forum}', [ForumController::class, 'update'])->name('forums.update');
+    Route::delete('/forums/{forum}', [ForumController::class, 'destroy'])->name('forums.destroy');
+
+    // Forum Topics Routes
+    Route::get('/forums/{forum}/topics/create', [ForumTopicController::class, 'create'])->name('topics.create');
+    Route::post('/forums/{forum}/topics', [ForumTopicController::class, 'store'])->name('topics.store');
+    Route::get('/forums/{forum}/topics/{topic}', [ForumTopicController::class, 'show'])->name('topics.show');
+    Route::get('/forums/{forum}/topics/{topic}/edit', [ForumTopicController::class, 'edit'])->name('topics.edit');
+    Route::put('/forums/{forum}/topics/{topic}', [ForumTopicController::class, 'update'])->name('topics.update');
+    Route::delete('/forums/{forum}/topics/{topic}', [ForumTopicController::class, 'destroy'])->name('topics.destroy');
+
+    // Forum Posts Routes
+    Route::post('/forums/{forum}/topics/{topic}/posts', [ForumPostController::class, 'store'])->name('posts.store');
+    Route::get('/forums/{forum}/topics/{topic}/posts/{post}/edit', [ForumPostController::class, 'edit'])->name('posts.edit');
+    Route::put('/forums/{forum}/topics/{topic}/posts/{post}', [ForumPostController::class, 'update'])->name('posts.update');
+    Route::delete('/forums/{forum}/topics/{topic}/posts/{post}', [ForumPostController::class, 'destroy'])->name('posts.destroy');
+    Route::post('/forums/{forum}/topics/{topic}/posts/{post}/solution', [ForumPostController::class, 'markAsSolution'])->name('posts.solution');
 });
