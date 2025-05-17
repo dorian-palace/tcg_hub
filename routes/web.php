@@ -5,6 +5,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ForumTopicController;
 use App\Http\Controllers\ForumPostController;
+use App\Http\Controllers\SitemapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,3 +149,5 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/forums/{forum}/topics/{topic}/posts/{post}', [ForumPostController::class, 'destroy'])->name('posts.destroy');
     Route::post('/forums/{forum}/topics/{topic}/posts/{post}/solution', [ForumPostController::class, 'markAsSolution'])->name('posts.solution');
 });
+
+Route::get('sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');

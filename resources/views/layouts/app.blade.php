@@ -5,7 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'TCGalaxy') }}</title>
+    <title>@yield('title', config('app.name', 'TCGalaxy')) - La plateforme des jeux de cartes à collectionner</title>
+    <meta name="description" content="@yield('meta_description', 'TCGalaxy est la plateforme ultime pour les amateurs de jeux de cartes à collectionner. Organisez des événements, gérez votre collection et trouvez des joueurs près de chez vous.')">
+    <meta name="keywords" content="jeux de cartes, TCG, Pokémon, Yu-Gi-Oh!, Magic: The Gathering, One Piece, tournois, événements, collection, échange">
+    <meta name="author" content="TCGalaxy">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', config('app.name', 'TCGalaxy'))">
+    <meta property="og:description" content="@yield('meta_description', 'TCGalaxy est la plateforme ultime pour les amateurs de jeux de cartes à collectionner.')">
+    <meta property="og:image" content="@yield('og_image', asset('images/og-image.jpg'))">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="@yield('title', config('app.name', 'TCGalaxy'))">
+    <meta property="twitter:description" content="@yield('meta_description', 'TCGalaxy est la plateforme ultime pour les amateurs de jeux de cartes à collectionner.')">
+    <meta property="twitter:image" content="@yield('og_image', asset('images/og-image.jpg'))">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

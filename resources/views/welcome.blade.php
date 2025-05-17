@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'TCGalaxy - La plateforme des jeux de cartes à collectionner')
+@section('meta_description', 'TCGalaxy est la plateforme ultime pour les amateurs de jeux de cartes à collectionner. Organisez des événements, gérez votre collection et trouvez des joueurs près de chez vous. Pokémon, Yu-Gi-Oh!, Magic: The Gathering, One Piece et plus encore.')
+@section('og_image', asset('images/og-image.jpg'))
+
 @section('styles')
 <style>
     .hero-section {
