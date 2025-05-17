@@ -1,6 +1,46 @@
 @extends('layouts.app')
 
+@section('title', $event->title . ' - Événement TCG')
+@section('meta_description', $event->description)
+@section('meta_keywords', 'événement tcg, ' . strtolower($event->game->name) . ', tournoi, ' . $event->city)
+
 @section('content')
+<!-- Schema.org Event Markup -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "{{ $event->title }}",
+    "description": "{{ $event->description }}",
+    "startDate": "{{ $event->start_datetime->toIso8601String() }}",
+    "endDate": "{{ $event->end_datetime->toIso8601String() }}",
+    "location": {
+        "@type": "Place",
+        "name": "{{ $event->venue_name }}",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ $event->address }}",
+            "addressLocality": "{{ $event->city }}",
+            "postalCode": "{{ $event->postal_code }}",
+            "addressCountry": "{{ $event->country }}"
+        }
+    },
+    "organizer": {
+        "@type": "Organization",
+        "name": "TCGalaxy",
+        "url": "{{ url('/') }}"
+    },
+    "offers": {
+        "@type": "Offer",
+        "price": "{{ $event->entry_fee }}",
+        "priceCurrency": "EUR",
+        "availability": "{{ $event->max_participants > $event->participants_count ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut' }}"
+    },
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+}
+</script>
+
 <div class="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
         @if(session('success'))
