@@ -55,7 +55,7 @@
         </div>
     </main>
 
-    <footer class="bg-gradient-to-r from-slate-700 to-slate-800 text-white py-12 mt-5">
+    {{-- <footer class="bg-gradient-to-r from-slate-700 to-slate-800 text-white py-12 mt-5">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="space-y-4">
@@ -104,7 +104,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> --}}
 
     @yield('scripts')
 </body>

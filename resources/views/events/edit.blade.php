@@ -13,7 +13,8 @@
                     <div>
                         <label for="title" class="block text-sm font-medium text-gray-300">Titre de l'événement</label>
                         <input type="text" id="title" name="title" value="{{ old('title', $event->title) }}" required
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            maxlength="255" pattern="[A-Za-zÀ-ÿ0-9\s\-_]+" title="Veuillez entrer un titre valide (lettres, chiffres, espaces, tirets et underscores uniquement)">
                         @error('title')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -37,7 +38,8 @@
                     <div>
                         <label for="description" class="block text-sm font-medium text-gray-300">Description</label>
                         <textarea id="description" name="description" rows="4" required
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">{{ old('description', $event->description) }}</textarea>
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            maxlength="1000">{{ old('description', $event->description) }}</textarea>
                         @error('description')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -61,7 +63,8 @@
                     <div>
                         <label for="venue_name" class="block text-sm font-medium text-gray-300">Nom du lieu</label>
                         <input type="text" id="venue_name" name="venue_name" value="{{ old('venue_name', $event->venue_name) }}" required
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            maxlength="255" pattern="[A-Za-zÀ-ÿ0-9\s\-_]+" title="Veuillez entrer un nom de lieu valide">
                         @error('venue_name')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -70,7 +73,8 @@
                     <div>
                         <label for="address" class="block text-sm font-medium text-gray-300">Adresse</label>
                         <input type="text" id="address" name="address" value="{{ old('address', $event->address) }}" required
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            maxlength="255">
                         @error('address')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -79,7 +83,8 @@
                     <div>
                         <label for="city" class="block text-sm font-medium text-gray-300">Ville</label>
                         <input type="text" id="city" name="city" value="{{ old('city', $event->city) }}" required
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            maxlength="100" pattern="[A-Za-zÀ-ÿ\s\-]+" title="Veuillez entrer un nom de ville valide">
                         @error('city')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -88,7 +93,8 @@
                     <div>
                         <label for="postal_code" class="block text-sm font-medium text-gray-300">Code postal</label>
                         <input type="text" id="postal_code" name="postal_code" value="{{ old('postal_code', $event->postal_code) }}" required
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            pattern="[0-9]{5}" title="Veuillez entrer un code postal valide (5 chiffres)">
                         @error('postal_code')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -97,7 +103,8 @@
                     <div>
                         <label for="start_datetime" class="block text-sm font-medium text-gray-300">Date et heure de début</label>
                         <input type="datetime-local" id="start_datetime" name="start_datetime" value="{{ old('start_datetime', $event->start_datetime->format('Y-m-d\TH:i')) }}" required
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            min="{{ date('Y-m-d\TH:i') }}">
                         @error('start_datetime')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -106,7 +113,8 @@
                     <div>
                         <label for="end_datetime" class="block text-sm font-medium text-gray-300">Date et heure de fin</label>
                         <input type="datetime-local" id="end_datetime" name="end_datetime" value="{{ old('end_datetime', $event->end_datetime->format('Y-m-d\TH:i')) }}" required
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            min="{{ date('Y-m-d\TH:i') }}">
                         @error('end_datetime')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror
@@ -114,7 +122,7 @@
 
                     <div>
                         <label for="max_participants" class="block text-sm font-medium text-gray-300">Nombre maximum de participants</label>
-                        <input type="number" id="max_participants" name="max_participants" value="{{ old('max_participants', $event->max_participants) }}" min="2"
+                        <input type="number" id="max_participants" name="max_participants" value="{{ old('max_participants', $event->max_participants) }}" min="2" max="1000" required
                             class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
                         @error('max_participants')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -123,7 +131,7 @@
 
                     <div>
                         <label for="entry_fee" class="block text-sm font-medium text-gray-300">Frais d'inscription (€)</label>
-                        <input type="number" id="entry_fee" name="entry_fee" value="{{ old('entry_fee', $event->entry_fee) }}" min="0" step="0.01"
+                        <input type="number" id="entry_fee" name="entry_fee" value="{{ old('entry_fee', $event->entry_fee) }}" min="0" max="1000" step="0.01"
                             class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
                         @error('entry_fee')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
@@ -133,7 +141,8 @@
                     <div>
                         <label for="prizes" class="block text-sm font-medium text-gray-300">Prix</label>
                         <textarea id="prizes" name="prizes" rows="3"
-                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">{{ old('prizes', $event->prizes) }}</textarea>
+                            class="mt-1 block w-full px-3 py-2 bg-light-primary border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                            maxlength="500">{{ old('prizes', $event->prizes) }}</textarea>
                         @error('prizes')
                             <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                         @enderror

@@ -18,7 +18,8 @@
                 <div>
                     <label for="email" class="block text-sm font-medium text-light-text">Adresse email</label>
                     <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus
-                        class="mt-1 block w-full px-3 py-2 border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text bg-light-primary focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                        class="mt-1 block w-full px-3 py-2 border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text bg-light-primary focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                        maxlength="255" autocomplete="email">
                     @error('email')
                         <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                     @enderror
@@ -27,7 +28,8 @@
                 <div>
                     <label for="password" class="block text-sm font-medium text-light-text">Mot de passe</label>
                     <input type="password" id="password" name="password" required
-                        class="mt-1 block w-full px-3 py-2 border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text bg-light-primary focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm">
+                        class="mt-1 block w-full px-3 py-2 border border-light-secondary rounded-md shadow-sm placeholder-light-text-secondary text-light-text bg-light-primary focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent sm:text-sm"
+                        minlength="8" autocomplete="current-password">
                     @error('password')
                         <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
                     @enderror

@@ -11,13 +11,13 @@
 
         <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden">
             <div class="p-6 border-b border-gray-200">
-                <h2 class="text-2xl font-bold text-gray-900">{{ $event->title }}</h2>
+                <h2 class="text-2xl font-bold text-gray-900">{{ e($event->title) }}</h2>
             </div>
 
             @if($event->image)
                 <div class="relative w-full h-48 sm:h-64 md:h-80 lg:h-96 bg-gray-100">
-                    <img src="{{ $event->image }}" 
-                         alt="{{ $event->title }}" 
+                    <img src="{{ e($event->image) }}" 
+                         alt="{{ e($event->title) }}" 
                          class="w-full h-full object-contain">
                 </div>
             @endif
@@ -27,12 +27,12 @@
                     <div class="space-y-4">
                         <div>
                             <h3 class="text-sm font-medium text-gray-600">Jeu</h3>
-                            <p class="mt-1 text-gray-900">{{ $event->game->name }}</p>
+                            <p class="mt-1 text-gray-900">{{ e($event->game->name) }}</p>
                         </div>
 
                         <div>
                             <h3 class="text-sm font-medium text-gray-600">Description</h3>
-                            <p class="mt-1 text-gray-900">{{ $event->description }}</p>
+                            <p class="mt-1 text-gray-900">{!! nl2br(e($event->description)) !!}</p>
                         </div>
 
                         <div>
@@ -61,13 +61,13 @@
                         <div>
                             <h3 class="text-sm font-medium text-gray-600">Lieu</h3>
                             <p class="mt-1 text-gray-900">
-                                {{ $event->venue_name }}<br>
-                                {{ $event->address }}<br>
-                                {{ $event->postal_code }} {{ $event->city }}<br>
+                                {{ e($event->venue_name) }}<br>
+                                {{ e($event->address) }}<br>
+                                {{ e($event->postal_code) }} {{ e($event->city) }}<br>
                                 @if($event->state)
-                                    {{ $event->state }}, 
+                                    {{ e($event->state) }}, 
                                 @endif
-                                {{ $event->country }}
+                                {{ e($event->country) }}
                             </p>
                         </div>
                     </div>
@@ -84,27 +84,27 @@
                         <div>
                             <h3 class="text-sm font-medium text-gray-600">Participants</h3>
                             <p class="mt-1 text-gray-900">
-                                Maximum : {{ $event->max_participants }}
+                                Maximum : {{ (int)$event->max_participants }}
                             </p>
                         </div>
 
                         @if($event->entry_fee > 0)
                             <div>
                                 <h3 class="text-sm font-medium text-gray-600">Frais d'entrée</h3>
-                                <p class="mt-1 text-gray-900">{{ number_format($event->entry_fee, 2) }} €</p>
+                                <p class="mt-1 text-gray-900">{{ number_format((float)$event->entry_fee, 2) }} €</p>
                             </div>
                         @endif
 
                         @if($event->prizes)
                             <div>
                                 <h3 class="text-sm font-medium text-gray-600">Prix à gagner</h3>
-                                <p class="mt-1 text-gray-900">{{ $event->prizes }}</p>
+                                <p class="mt-1 text-gray-900">{!! nl2br(e($event->prizes)) !!}</p>
                             </div>
                         @endif
 
                         <div>
                             <h3 class="text-sm font-medium text-gray-600">Organisateur</h3>
-                            <p class="mt-1 text-gray-900">{{ $event->user->name }}</p>
+                            <p class="mt-1 text-gray-900">{{ e($event->user->name) }}</p>
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                             @endif
                         </div>
                         <div class="mt-4">
-                            <p class="text-gray-700">{{ $comment->content }}</p>
+                            <p class="text-gray-700">{!! nl2br(e($comment->content)) !!}</p>
                         </div>
 
                         @auth
@@ -242,7 +242,7 @@
                                             @endif
                                         </div>
                                         <div class="mt-2">
-                                            <p class="text-gray-700">{{ $reply->content }}</p>
+                                            <p class="text-gray-700">{!! nl2br(e($reply->content)) !!}</p>
                                         </div>
                                     </div>
                                 @endforeach
