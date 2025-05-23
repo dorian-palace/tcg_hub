@@ -36,20 +36,26 @@
 
 @section('content')
     <!-- Hero Section -->
-    <div class="py-16 bg-white">
+    <div class="py-8 sm:py-12 md:py-16 lg:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl">
-                    Bienvenue sur TCGalaxy
-                </h1>
-                <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-600 sm:mt-4">
-                    La plateforme ultime pour les amateurs de jeux de cartes à collectionner.<br>
-                    Organisez des événements, gérez votre collection et trouvez des joueurs près de chez vous.
-                </p>
-                <div class="mt-8 flex flex-wrap justify-center gap-4">
-                    <a href="{{ route('events.find') }}" class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Trouver des événements</a>
-                    <a href="{{ route('games.index') }}" class="px-6 py-3 bg-light-accent text-light-text rounded-lg hover:bg-light-secondary transition-colors">Explorer les jeux</a>
-                    <a href="{{ route('register') }}" class="px-6 py-3 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-colors">Créer un compte</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
+                <div class="text-center md:text-left order-2 md:order-1">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                        Bienvenue sur TCGalaxy
+                    </h1>
+                    <p class="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto md:mx-0">
+                        La plateforme ultime pour les amateurs de jeux de cartes à collectionner.<br class="hidden sm:block">
+                        Organisez des événements, gérez votre collection et trouvez des joueurs près de chez vous.
+                    </p>
+                    <div class="mt-6 sm:mt-8 flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4">
+                        <a href="{{ route('events.find') }}" class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-sm sm:text-base">Trouver des événements</a>
+                        <a href="{{ route('games.index') }}" class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-light-accent text-light-text rounded-lg hover:bg-light-secondary transition-colors text-sm sm:text-base">Explorer les jeux</a>
+                        <a href="{{ route('register') }}" class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-colors text-sm sm:text-base">Créer un compte</a>
+                    </div>
+                </div>
+
+                <div class="order-1 md:order-2 mb-6 md:mb-0">
+                    <img src="{{ asset('images/5.svg') }}" alt="TCG Illustration" class="w-full h-auto max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] mx-auto">
                 </div>
             </div>
         </div>
